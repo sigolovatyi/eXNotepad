@@ -7,7 +7,7 @@ import java.util.List;
 public interface IDaoService {
     int createUnit(Dao object);
     Dao getUnit(Long id);
-    int updateUnit(Dao film);
+    int updateUnit(Long id);
     int deleteUnit(Long id);
     List<Dao> findAll();
 

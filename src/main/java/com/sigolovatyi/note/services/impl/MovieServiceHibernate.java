@@ -33,13 +33,15 @@ public class MovieServiceHibernate implements IDaoService {
     }
 
     @Override
-    public int updateUnit(Dao film) {
+    public int updateUnit(Long id) {
+        filmRepositories.updateMoviesAdviceById(2, id);
         return 0;
     }
 
     @Override
     public int deleteUnit(Long id) {
-        return 0;
+        filmRepositories.delete(filmRepositories.findById(id).get());
+        return 1;
     }
 
     @Override

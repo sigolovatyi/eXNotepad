@@ -13,12 +13,11 @@
 <body>
 <h1 style="color: blueviolet">MOVIES</h1>
 <h2>
-    <a href="/movies/create_some_film">Add a movie</a>
+    <a href="/movies/add_film">Add a movie</a>
     </br>
-    <a href="/movies/delete_move_by_id">In development...</a>
+    <a href="/movies/get_all">Movies for watching</a>
     </br>
-    <a href="/movies/getAll">List of movies</a>
-    </br>
+    <a href="/movies/recommend">Recommended movies</a>
 </h2>
 </body>
 </html>

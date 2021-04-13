@@ -39,7 +39,7 @@ public class MovieServiceJdbc implements IDaoService {
     }
 
     @Override
-    public int updateUnit(Dao film) {
+    public int updateUnit(Long id) {
         return 0;
     }
 
