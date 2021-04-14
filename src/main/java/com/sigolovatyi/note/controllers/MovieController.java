@@ -39,30 +39,34 @@ public class MovieController {
 
     @GetMapping("/movies/get_all")
     public String getAll(Model model){
-        List<Dao> all = service.findAll();
+        List<Dao> all = getDaoList(0);
         model.addAttribute("movies", all);
         return "watch_all";
     }
 
-    @GetMapping("/movies/{id}")
-    public ResponseEntity deleteById(@PathVariable("id") Long id){
-        service.deleteUnit(id);
-        return new ResponseEntity("Movie had deleted", HttpStatus.OK);
+    @GetMapping("/movies/recommend/{id}")
+    public String updateById(Model model, @PathVariable("id") Long id){
+        service.updateUnit(id);
+        return getAll(model);
     }
 
-    @GetMapping("/movies/recommend/{id}")
-    public ResponseEntity updateById(@PathVariable("id") Long id){
-        service.updateUnit(id);
-        return new ResponseEntity("film added to recommend list", HttpStatus.OK);
+    @GetMapping("/movies/{id}")
+    public String deleteById(Model model, @PathVariable("id") Long id){
+        service.deleteUnit(id);
+        return getAll(model);
     }
 
     @GetMapping("/movies/recommend")
     public String getRecommend(Model model){
-        List<Dao> all = service.findAll()
-                .stream()
-                .filter((a)->((Movie)a).getAdvice()==2)
-                .collect(Collectors.toList());
+        List<Dao> all = getDaoList(2);
         model.addAttribute("movies", all);
         return "watch_recommend";
+    }
+
+    private List<Dao> getDaoList(int variable){
+        return service.findAll()
+                .stream()
+                .filter((a)->((Movie)a).getAdvice()==variable)
+                .collect(Collectors.toList());
     }
 }
